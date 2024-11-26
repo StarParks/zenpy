@@ -79,8 +79,8 @@ class GenericZendeskResponseHandler(ResponseHandler):
                     "ticket_audit", response_json)
 
         # Locate and store the single objects.
-        for response_json_object_name in response_json:
-            if response_json_object_name in self.object_mapping.class_mapping:
+        for response_json_object_name in response_json.keys():
+            if response_json_object_name in self.object_mapping.class_mapping.keys():
                 zenpy_object = self.object_mapping.object_from_json(
                     zenpy_object_name, response_json[zenpy_object_name])
                 response_objects[zenpy_object_name] = zenpy_object
